@@ -15,6 +15,27 @@ assignment
 	| ID MULTEQUAL expression
 	| ID MINUSEQUAL expression
 
+
+EQUAL
+	: '='
+	;
+
+PLUSEQUAL
+	: '+='
+	;
+
+DIVEQUAL
+	: '/='
+	;
+
+MULTEQUAL
+	: '*='
+	;
+
+MINUSEQUAL
+	: '-='
+	;
+
 ID
 	: [a-zA-Z_][a-zA-Z_0-9]*
 	;
