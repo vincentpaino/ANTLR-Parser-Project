@@ -12,6 +12,7 @@ assignment
 	| ID MINUSEQUAL expression
 	;
 
+// Note: MULT, DIV, MOD have higher operator precedence than PLUS, MINUS in a left-recursive parser
 expression
 	: expression (MULT | DIV | MOD) expression
 	| expression (PLUS | MINUS) expression
@@ -25,6 +26,9 @@ expression
 	| ID
 	;
 
+// Lexer rules defined below (this is a combined grammar)
+
+// Defined operators
 EQUAL : '=' ;
 PLUSEQUAL : '+=' ;
 DIVEQUAL : '/=' ;
@@ -32,7 +36,18 @@ MULTEQUAL : '*=' ;
 MINUSEQUAL : '-=' ;
 PLUS : '+' ;
 MINUS : '-' ;
+MULT : '*' ;
+DIV : '/' ;
+MOD : '%' ;
 
+// Defined id, types, and whitespace
 ID : [a-zA-Z_][a-zA-Z_0-9]* ;
 INT : [0-9]+ ;
+FLOAT : [0-9]+ '.' [0-9]+ ;
+
+STRING : '"' ~["\r\n]* '"'
+       | '\'' ~['\r\n]* '\''
+       ;
+
+BOOL : 'True' | 'False' ;
 WS : [ \t\r\n]+ -> skip ;
