@@ -7,3 +7,8 @@ Jase DeCota,
 Greg Gomez,
 Sid Kuchangi,
 Jack Schroeder
+
+Deliverable 1:
+
+ PLUS   : Parses binary addition between two expressions.
+ MINUS  : Parses binary subtraction between two expressions.
