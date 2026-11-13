@@ -1,12 +1,8 @@
 grammar SimplePython;
 
-program
-	: statement* EOF
-	;
+program : statement* EOF ;
 
-statement
-	: assignment
-	;
+statement : assignment ;
 
 assignment
 	: ID EQUAL expression
@@ -14,36 +10,27 @@ assignment
 	| ID DIVEQUAL expression
 	| ID MULTEQUAL expression
 	| ID MINUSEQUAL expression
-
-
-EQUAL
-	: '='
 	;
 
-PLUSEQUAL
-	: '+='
+expression
+	: expression (MULT | DIV | MOD) expression
+	| expression (PLUS | MINUS) expression
+	| MINUS expression
+	| LPAR expression RPAR
+	| LBRACK (expression (COMMA expression)*)? RBRACK
+	| INT
+	| FLOAT
+	| STRING
+	| BOOL
+	| ID
 	;
 
-DIVEQUAL
-	: '/='
-	;
+EQUAL : '=' ;
+PLUSEQUAL : '+=' ;
+DIVEQUAL : '/=' ;
+MULTEQUAL : '*=' ;
+MINUSEQUAL : '-=' ;
 
-MULTEQUAL
-	: '*='
-	;
-
-MINUSEQUAL
-	: '-='
-	;
-
-ID
-	: [a-zA-Z_][a-zA-Z_0-9]*
-	;
-
-INT
-	: [0-9]+
-	;
-
-WS
-	: [ \t\r\n]+ -> skip
-	;
+ID : [a-zA-Z_][a-zA-Z_0-9]* ;
+INT : [0-9]+ ;
+WS : [ \t\r\n]+ -> skip ;
