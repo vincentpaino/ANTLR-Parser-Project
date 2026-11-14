@@ -39,8 +39,14 @@ MINUS : '-' ;
 MULT : '*' ;
 DIV : '/' ;
 MOD : '%' ;
+LBRACK : '[' ;
+RBRACK : ']' ;
+COMMA : ',' ;
+LPAR : '(' ;
+RPAR : ')' ;
 
 // Defined id, types, and whitespace
+BOOL : 'True' | 'False' ;
 ID : [a-zA-Z_][a-zA-Z_0-9]* ;
 INT : [0-9]+ ;
 FLOAT : [0-9]+ '.' [0-9]+ ;
@@ -49,5 +55,4 @@ STRING : '"' ~["\r\n]* '"'
        | '\'' ~['\r\n]* '\''
        ;
 
-BOOL : 'True' | 'False' ;
 WS : [ \t\r\n]+ -> skip ;
